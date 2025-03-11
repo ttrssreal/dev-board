@@ -26,8 +26,6 @@ in
       hash = "sha256-UYIPu/mL6iLnQKPS3ilAFuCS5IQKOxzQ3Oxn7Q/oKsQ=";
     };
 
-    PLATFORM = "boron";
-
     nativeBuildInputs = [
       perl540Packages.ArchiveZip
       which
@@ -44,14 +42,10 @@ in
               ${sed-replace-bash-path "sh"}"
     '';
 
-    preBuild = ''
-      makeFlagsArray+=(
-        APPDIR=${src}
-        TARGET_DIR=$out
-        v=1
-        -C main
-      )
-    '';
+    PLATFORM = "boron";
+    APPDIR = src;
+    TARGET_DIR = placeholder "out";
+    makeFlags = [ "v=1" "-C" "main" ];
 
     dontInstall = true;
   }
