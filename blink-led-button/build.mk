@@ -1,0 +1,1 @@
+CPPSRC += src/main.cpp

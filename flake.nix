@@ -37,9 +37,13 @@
         };
 
         blink-led = buildBoronApp "blink-led" ./blink-led;
+        blink-led-button = buildBoronApp "blink-led-button" ./blink-led-button;
       in {
         packages = {
-          inherit blink-led;
+          inherit
+            blink-led
+            blink-led-button
+            ;
         };
 
         devShells.default = pkgs.mkShell {
